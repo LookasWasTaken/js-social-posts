@@ -90,11 +90,13 @@ for (let i = 0; i < posts.length; i++) {
 
   const container = document.getElementById("container");
 
- // Controllo provvisorio nel caso un immagine avesse valore "null"
+  // Controllo provvisorio nel caso un immagine avesse valore "null"
 
   if (postElement.author.image === null) {
     postElement.author.image = "https://unsplash.it/300/300?image=1";
   }
+
+  // Genero la postCard con il template HTML che era presente nell'index.html
 
   const postCard = `
     <div class="post">
@@ -111,12 +113,12 @@ for (let i = 0; i < posts.length; i++) {
             </div>
             <div class="post__text">${postElement.content}</div>
             <div class="post__image">
-                <img src="${postElement.media}" alt="">
+                <img src="${postElement.media}" alt="${postElement.author.name}">
             </div>
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button js-like-button" data-postid="1">
+                        <a class="like-button js-like-button" data-postid="1" onClick="likeClick()">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -132,13 +134,10 @@ for (let i = 0; i < posts.length; i++) {
   // Genero all'interno dell'HTML del container tutto il markup generato
 
   container.innerHTML += postCard;
+}
 
-  // Seleziono il bottone Like dove aggiungerò un event listener
+// Funzione che abilita il "onClick" in HTML
 
-  const likeButton = document.querySelector(".js-like-button");
-
-  likeButton.addEventListener("click", function () {
-    likeButton.style.color = "#6495ed";
-    postElement.likes + 1;
-  });
+function likeClick() {
+  console.log("Pressed the Like Button");
 }
