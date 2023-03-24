@@ -118,7 +118,7 @@ for (let i = 0; i < posts.length; i++) {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button js-like-button" data-postid="1" onClick="likeClick()">
+                        <a class="like-button js-like-button" data-postid="${postElement.id}" onClick="likeClick()">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -134,10 +134,16 @@ for (let i = 0; i < posts.length; i++) {
   // Genero all'interno dell'HTML del container tutto il markup generato
 
   container.innerHTML += postCard;
-}
+
+// Seleziono i pulsanti dove inserirò il nuovo valore
+
+  const likeCounter = document.getElementsByClassName("js-likes-counter")
 
 // Funzione che abilita il "onClick" in HTML
 
 function likeClick() {
   console.log("Pressed the Like Button");
+
+}
+
 }
